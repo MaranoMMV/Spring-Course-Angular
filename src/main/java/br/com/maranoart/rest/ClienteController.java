@@ -1,9 +1,12 @@
 package br.com.maranoart.rest;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,55 +23,58 @@ import br.com.maranoart.model.repository.ClienteRepository;
 
 @RestController
 @RequestMapping("/api/clientes")
+@CrossOrigin("http://localhost:4200")
+// @CrossOrigin("http://localhost:4200")
 public class ClienteController {
     
-    private final ClienteRepository clienteRepository;
+    private final ClienteRepository repository;
 
     @Autowired
-    public ClienteController( ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
+    public ClienteController(ClienteRepository repository) {
+        this.repository = repository;
     }
 
-    @PostMapping()
+    @GetMapping
+    public List<Cliente> obterTodos(){
+        return repository.findAll();
+    }
+
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente salvar(@RequestBody @Valid Cliente cliente){
-        return clienteRepository.save(cliente);
+    public Cliente salvar( @RequestBody @Valid Cliente cliente ){
+        return repository.save(cliente);
     }
 
     @GetMapping("{id}")
-    public Cliente getClienteById( @PathVariable Integer id){
-        return clienteRepository.findById(id)
-                                .orElseThrow(() -> 
-                                    new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public Cliente acharPorId( @PathVariable Integer id ){
+        return repository
+                .findById(id)
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado") );
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteClienteById( @PathVariable Integer id){
-        clienteRepository.findById(id)
-                        .map( cliente -> {
-                            clienteRepository.delete(cliente);
-                            return Void.TYPE;
-                        })
-                        .orElseThrow(() -> 
-                            new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+    public void deletar( @PathVariable Integer id ){
+        repository
+            .findById(id)
+            .map( cliente -> {
+                repository.delete(cliente);
+                return Void.TYPE;
+            })
+            .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado") );
     }
-
-    // @GetMapping()
-    // public List<Cliente> getClienteAll(Cliente cliente){
-    //     return clienteRepository.findAll(cliente);
-    // }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Cliente clienteAtualizado){
-        clienteRepository.findById(id)
-                        .map( cliente -> {
-                           cliente.setNome(clienteAtualizado.getNome());
-                           cliente.setCpf(clienteAtualizado.getCpf());
-                           return clienteRepository.save(clienteAtualizado);
-                        })
-                                .orElseThrow(() -> 
-                                    new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+    public void atualizar( @PathVariable Integer id,
+                           @RequestBody @Valid Cliente clienteAtualizado ) {
+        repository
+                .findById(id)
+                .map( cliente -> {
+                    cliente.setNome(clienteAtualizado.getNome());
+                    cliente.setCpf(clienteAtualizado.getCpf());
+                    return repository.save(cliente);
+                })
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado") );
     }
 }

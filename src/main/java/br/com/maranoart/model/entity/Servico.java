@@ -22,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Servico {
 
+   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
