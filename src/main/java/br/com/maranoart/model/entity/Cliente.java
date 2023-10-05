@@ -43,6 +43,8 @@ public class Cliente {
     @Column(name = "data_cadastro", updatable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCadastro;
+    
+    
 
     @PrePersist
     public void prePersist(){

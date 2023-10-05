@@ -9,12 +9,16 @@ import{ TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component'
 import { ClientesModule } from './clientes/clientes.module';
 import { ClientesService } from './clientes.service';
+import { ServicoPrestadoFormComponent } from './servico-prestrado/servico-prestado-form/servico-prestado-form.component';
+import { ServicoPrestadoListaComponent } from './servico-prestrado/servico-prestado-lista/servico-prestado-lista.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ServicoPrestadoFormComponent,
+    ServicoPrestadoListaComponent
   ],
   imports: [
     BrowserModule,
