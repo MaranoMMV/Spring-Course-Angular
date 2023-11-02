@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "clientes-app": {
+    "Angular-Course": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/clientes-app",
+            "outputPath": "dist/angular-course",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,17 +25,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "node_modules/jquery/dist/jquery.js",
               "node_modules/jquery/dist/jquery.slim.js",
               "node_modules/popper.js/dist/umd/popper.js",
               "node_modules/bootstrap/dist/js/bootstrap.js"
-            
             ]
           },
           "configurations": {
@@ -69,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "clientes-app:build:production"
+              "browserTarget": "Angular-Course:build:production"
             },
             "development": {
-              "browserTarget": "clientes-app:build:development"
+              "browserTarget": "Angular-Course:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "clientes-app:build"
+            "browserTarget": "Angular-Course:build"
           }
         },
         "test": {
@@ -98,13 +95,14 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "56e20ed6-bcb8-418a-9047-d66b01bc8f62"
+    "analytics": "8d194edd-609c-44a9-81db-f0aae0cdea57"
   }
 }
