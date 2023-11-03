@@ -9,4 +9,13 @@
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\Angular-Course</BuildOutputFolder>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="src\app\clientes\clientes-form\cliente.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\clientes\clientes-form\cliente.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\app\clientes\clientes-form\cliente.ts" />
+  </ItemGroup>
 </Project>

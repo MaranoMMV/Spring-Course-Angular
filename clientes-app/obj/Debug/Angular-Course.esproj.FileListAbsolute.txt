@@ -1,2 +1,3 @@
 C:\Course\Spring-Angular\Angular-Course\obj\Debug\Angular-Course.esproj.CoreCompileInputs.cache
 C:\Course\Spring-Angular\clientes-app\obj\Debug\Angular-Course.esproj.CoreCompileInputs.cache
+C:\Course\Spring-Angular\Spring-Course-Angular\clientes-app\obj\Debug\Angular-Course.esproj.CoreCompileInputs.cache
