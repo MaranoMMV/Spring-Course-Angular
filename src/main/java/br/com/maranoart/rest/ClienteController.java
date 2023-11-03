@@ -34,15 +34,15 @@ public class ClienteController {
         this.repository = repository;
     }
 
-    @GetMapping
-    public List<Cliente> obterTodos(){
-        return repository.findAll();
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente salvar( @RequestBody @Valid Cliente cliente ){
         return repository.save(cliente);
+    }
+
+    @GetMapping
+    public List<Cliente> obterTodos(){
+        return repository.findAll();
     }
 
     @GetMapping("{id}")
