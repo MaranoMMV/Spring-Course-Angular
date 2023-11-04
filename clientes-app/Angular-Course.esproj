@@ -8,6 +8,7 @@
     <ProductionBuildCommand>npm run build</ProductionBuildCommand>
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\Angular-Course</BuildOutputFolder>
+    <BuildCommand>ng serve</BuildCommand>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="src\app\clientes\clientes-form\cliente.ts" />
