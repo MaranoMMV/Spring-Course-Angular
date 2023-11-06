@@ -23,7 +23,6 @@ import br.com.maranoart.model.repository.ClienteRepository;
 
 @RestController
 @RequestMapping("/api/clientes")
-@CrossOrigin("http://localhost:4200")
 // @CrossOrigin("http://localhost:4200")
 public class ClienteController {
     

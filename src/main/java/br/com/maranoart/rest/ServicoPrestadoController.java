@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,7 +56,7 @@ public class ServicoPrestadoController {
 	
 	@GetMapping
 	public List<ServicoPrestado> pesquisar(
-		@RequestParam(value = "nome", required = false) String nome,
+		@RequestParam(value = "nome", required = false, defaultValue = "") String nome,
 		@RequestParam(value = "mes", required = false ) Integer mes){
 		
 			return repository.findByNomeClienteAndMes("%" + nome + "%",  mes);
