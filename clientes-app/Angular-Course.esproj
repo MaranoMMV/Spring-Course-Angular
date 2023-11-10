@@ -10,13 +10,4 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\Angular-Course</BuildOutputFolder>
     <BuildCommand>ng serve</BuildCommand>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="src\app\clientes\clientes-form\cliente.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="src\app\clientes\clientes-form\cliente.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="src\app\clientes\clientes-form\cliente.ts" />
-  </ItemGroup>
 </Project>

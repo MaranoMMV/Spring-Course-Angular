@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -25,21 +26,24 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ServicoPrestado {
 
-   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    //@NotEmpty(message = "{campo.descricao.obrigatorio}")
     @Column(nullable = false, length = 150)
     private String descricao;
 
+    //@NotEmpty(message = "{campo.cliente.obrigatorio}")
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
+    //@NotEmpty(message = "{campo.preco.obrigatorio}")
     @Column
     private BigDecimal valor;
     
+    //@NotEmpty(message = "{campo.data.obrigatorio}")
     @Column
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;

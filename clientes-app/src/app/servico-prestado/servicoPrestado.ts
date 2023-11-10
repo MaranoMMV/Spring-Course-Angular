@@ -1,6 +1,6 @@
 export class ServicoPrestado {
-  descricao?: String;
-  preco?: String;
-  data?: String;
+  descricao?: string;
+  preco?: string;
+  data?: string;
   idCliente?: number;
 }
