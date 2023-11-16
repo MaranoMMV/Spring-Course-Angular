@@ -13,12 +13,15 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.maranoart.model.entity.Usuario;
 import br.com.maranoart.rest.exception.UsuarioCadastradoException;
 import br.com.maranoart.service.UsuarioService;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/usuarios")
+@RequiredArgsConstructor
 public class UsuarioController {
 
-    private UsuarioService usuarioService;
+    
+    private final UsuarioService usuarioService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
