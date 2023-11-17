@@ -19,15 +19,12 @@ import lombok.AllArgsConstructor;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
     
-    @Autowired
-    private final AuthenticationManager authenticationManager;
 
-    public AuthorizationServerConfig(AuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @Value("${security.jwt.signing-key}")
-    private String signingkey;
+    private String signingKey;
 
     @Bean
     public TokenStore tokenStore(){
@@ -37,7 +34,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter accessTokenConverter(){
         JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
-        tokenConverter.setSigningKey(signingkey);
+        tokenConverter.setSigningKey(signingKey);
         return tokenConverter;
     }
 
@@ -57,7 +54,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             .secret("@321")
             .scopes("read", "write")
             .authorizedGrantTypes("password")
-            .accessTokenValiditySeconds( 60 * 30);
+            .accessTokenValiditySeconds(1800);
     }
 
 }

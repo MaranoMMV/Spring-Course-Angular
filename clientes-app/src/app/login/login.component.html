@@ -22,34 +22,36 @@
                   <form #loginForm="ngForm" (submit)="onSubmit();">
                     <div class="form-group">
                       <label class="small mb-1">Login</label>
-                      <input type="text"
-                             name="username"
+                      <input type="text" name="username"
                              [(ngModel)]="username" autocomplete="off"
                              class="form-control py-4"
-                             placeholder="Digite sua senha" />
-
+                             placeholder="Digite seu login" />
                     </div>
+
                     <div class="form-group">
-                      <label class="small mb-1">Senha: </label>
-                      <input type="password"
-                             name="password"
+                      <label class="small mb-1">Senha</label>
+                      <input type="password" name="password"
                              [(ngModel)]="password"
                              class="form-control py-4"
-                             placeholder="Digite seu login" />
-
+                             placeholder="Digite sua Senha" />
                     </div>
-                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                      <button type="submit" class=" btn btn-primary" *ngIf="!cadastrando">
+
+                    <div class="form-group align-items-center justify-content-between mt-4 mb-0">
+                      <button type="submit" class="btn btn-primary" *ngIf="!cadastrando">
                         Enviar
                       </button>
-                      <button type="button" (click)="cadastrar()" class=" btn btn-success" *ngIf="cadastrando">
+
+                      <button type="button" class="btn btn-success"
+                              (click)="cadastrar()"
+                              *ngIf="cadastrando">
                         Cadastrar
                       </button>
-                      <button (click)="cancelaCadastro();" type="button" class=" btn btn-danger ml-1" *ngIf="cadastrando">
+
+                      <button type="button" (click)="cancelaCadastro()"
+                              class="btn btn-danger ml-1" *ngIf="cadastrando">
                         Cancelar
                       </button>
                     </div>
-
                   </form>
                 </div>
                 <div class="card-footer text-center">

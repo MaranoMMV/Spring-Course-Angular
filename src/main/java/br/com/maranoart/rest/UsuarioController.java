@@ -15,22 +15,22 @@ import br.com.maranoart.rest.exception.UsuarioCadastradoException;
 import br.com.maranoart.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 
+
 @RestController
 @RequestMapping("/api/usuarios")
 @RequiredArgsConstructor
 public class UsuarioController {
 
     
-    private final UsuarioService usuarioService;
+    private final UsuarioService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void salvar( @RequestBody @Valid Usuario usuarioEntity){
+    public void salvar(@RequestBody @Valid Usuario usuario){
         try{
-            usuarioService.salvar(usuarioEntity);
-        }catch(UsuarioCadastradoException e){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+            service.salvar(usuario);
+        }catch (UsuarioCadastradoException e){
+            throw new ResponseStatusException( HttpStatus.BAD_REQUEST, e.getMessage() );
         }
-    
     }
 }

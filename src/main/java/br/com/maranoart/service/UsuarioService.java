@@ -15,27 +15,29 @@ import br.com.maranoart.rest.exception.UsuarioCadastradoException;
 public class UsuarioService implements UserDetailsService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioRepository repository;
 
     public Usuario salvar(Usuario usuario){
-        boolean exists = usuarioRepository.existsByUsername(usuario.getUsername());
+        boolean exists = repository.existsByUsername(usuario.getUsername());
         if(exists){
             throw new UsuarioCadastradoException(usuario.getUsername());
         }
-        return usuarioRepository.save(usuario);
+        return repository.save(usuario);
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       Usuario usuario = usuarioRepository
-                .findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Login não encontrado!"));
+    public UserDetails loadUserByUsername( String username ) throws UsernameNotFoundException {
+        Usuario usuario = repository
+                            .findByUsername(username)
+                            .orElseThrow(() -> new UsernameNotFoundException("Login não encontrado.") );
+
         return User
                 .builder()
-                    .username(usuario.getUsername())
-                    .password(usuario.getPassword())
-                    .roles("USER")
-                .build();
-            }
+                .username(usuario.getUsername())
+                .password(usuario.getPassword())
+                .roles("USER")
+                .build()
+                ;
+    }
     
 }
